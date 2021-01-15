@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-6 mt-5">
+      <div class="card">
+        <div class="card-header text-center">
+          <span class="badge">{{soru.icerik}}</span>
+        </div>
+        <div class="card-body">
+          <h5 class="text-center" *ngIf="soru.cevaplar">Cevaplar</h5>
+          <h5 class="text-center" *ngIf="!soru.cevaplar">Henüz hiç cevap verilmemiş</h5>
+          <div class="ml-3" *ngFor="let cevap of soru.cevaplar; let cevapIndex = index;">
+            <span class="badge badge-secondary">{{cevapIndex + 1}}</span>
+            <span class="badge">{{cevap.icerik}}</span>
+            <button *ngIf="authServis.girisKontrol && (authServis.kullanici.uid === cevap.kullaniciId  || authServis.kullanici.uid === soru.kullaniciId)" (click)="CevabimiSil(cevap.id)" type="button" class="close" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <hr>
+
+          <div *ngIf="authServis.girisKontrol" class="col my-3">
+            <app-cevap-ekle [soruId]="soru.id"></app-cevap-ekle>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

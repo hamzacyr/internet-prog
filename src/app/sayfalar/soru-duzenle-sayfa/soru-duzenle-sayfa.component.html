@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center mt-5">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header text-center">
+          Soru Duzenle
+        </div>
+        <div class="card-body">
+          <div class="col">
+            <div class="row justify-content-center">
+              <div class="col-md-6">
+                <form (ngSubmit)="SoruDuzenle()">
+                  <div class="form-group">
+                    <label for="soru">Soru</label>
+                    <input [(ngModel)]="icerik" name="soru" id="soru" type="text" class="form-control" placeholder="Soru">
+                  </div>
+                  <div class="form-group">
+                    <select [(ngModel)]="kategoriId" id="select" class="form-select" name="kategori">
+                      <option [ngValue]="kat.id" *ngFor="let kat of kategoriler | async">{{kat.adi}}</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="btn btn-primary float-right">Kaydet</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

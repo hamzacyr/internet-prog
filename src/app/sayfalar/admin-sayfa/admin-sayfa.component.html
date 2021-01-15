@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div class="row justify-content-center mt-4">
+    <div class="col-md-10">
+
+      <div class="card">
+        <div class="card-header text-center">Kategori Ekle</div>
+        <div class="card-body">
+          <div class="col">
+            <div class="row justify-content-center">
+              <div class="col-md-6">
+                <form (ngSubmit)="KategoriOlustur()">
+                  <div class="form-group">
+                    <label for="kategori">Kategori</label>
+                    <input [(ngModel)]="kategori" name="kategori" id="kategori" type="text" class="form-control"
+                           placeholder="Kategori">
+                  </div>
+                  <button type="submit" class="btn btn-primary float-right">Ekle</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <h3 class="text-center">Kategoriler</h3>
+
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <div class="list-group">
+            <button (click)="GuncellenecekKategori(kat)"
+                    *ngFor="let kat of kategoriler | async"
+                    [ngClass]="kat.id === suankiKategori.id ? 'active': ''"
+                    type="button"
+                    class="list-group-item list-group-item-action"
+            >
+              {{kat.adi}}
+              <button (click)="KategoriSil(kat.id)" type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </button>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <form (ngSubmit)="GuncellencekKategoriyiGuncelle()">
+            <div class="form-group">
+              <label for="suanki-kategori">Kategori</label>
+              <input [(ngModel)]="suankiKategori.adi" name="kategori" id="suanki-kategori" type="text"
+                     class="form-control" placeholder="Kategori">
+            </div>
+            <button type="submit" class="btn btn-primary float-right">Güncelle</button>
+          </form>
+        </div>
+      </div>
+
+      <hr>
+
+      <h3 class="text-center">Sorular</h3>
+
+      <div class="row justify-content-center">
+        <div class="col-md-7">
+          <div class="list-group">
+            <button
+                    *ngFor="let soru of sorular | async"
+                    type="button"
+                    class="list-group-item list-group-item-action"
+            >
+              {{soru.icerik}}
+              <button (click)="SoruSil(soru.id)" type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

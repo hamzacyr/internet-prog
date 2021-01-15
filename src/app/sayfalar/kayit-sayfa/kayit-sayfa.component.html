@@ -1,0 +1,43 @@
+<div class="container-fluid" >
+  <div class="row justify-content-center align-items-center" style="height: 100vh">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header text-center">
+          Kayıt Ol
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="KayitOl()">
+            <div class="form-group">
+              <label for="isim">İsim</label>
+              <input [(ngModel)]="isim" name="isim" id="isim" type="text" class="form-control" placeholder="İsim">
+            </div>
+
+            <div class="form-group">
+              <label for="soyisim">Soyisim</label>
+              <input [(ngModel)]="soyisim" name="soyisim" id="soyisim" type="text" class="form-control" placeholder="Soyisim">
+            </div>
+
+            <div class="form-group">
+              <label for="email">E-Posta Adresi</label>
+              <input [(ngModel)]="eposta" name="eposta" id="email" type="email" class="form-control" placeholder="E-Posta">
+            </div>
+
+            <div class="form-group">
+              <label for="password">Şifre</label>
+              <input [(ngModel)]="sifre" name="sifre" type="password" class="form-control" id="password" placeholder="Şifre">
+            </div>
+
+            <button type="submit" class="btn btn-primary float-right">Kayıt Ol</button>
+          </form>
+        </div>
+        <div class="card-footer">
+          <a (click)="router.navigate(['giris'])" class="card-link" role="button">Zaten üye misin?</a>
+        </div>
+        <div class="alert" [ngClass]="sonuc.islem ? 'alert-success' : 'alert-danger'" *ngIf="sonuc.mesaj?.length > 0">
+          {{sonuc.mesaj}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

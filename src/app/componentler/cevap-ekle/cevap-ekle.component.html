@@ -1,0 +1,15 @@
+<div class="row justify-content-center">
+  <div class="col-md-10">
+    <form (ngSubmit)="CevapEkle()">
+      <div class="input-group">
+        <input [(ngModel)]="cevap" name="cevap" id="cevap" type="text" class="form-control" placeholder="Cevap">
+        <div class="input-group-append">
+          <button class="btn btn-outline-success" type="submit">Ekle</button>
+        </div>
+        <div (click)="Begen()" class="input-group-append">
+          <button class="btn btn-outline-primary" type="button">Beğen</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

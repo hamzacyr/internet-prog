@@ -1,0 +1,49 @@
+<div class="container-fluid">
+
+  <h3 class="text-center">
+    Merhaba <b>{{authServis.kullanici.displayName}}</b>
+  </h3>
+
+  <hr>
+
+  <app-soru-ekle *ngIf="authServis.girisKontrol"></app-soru-ekle>
+
+  <hr>
+
+  <div class="row">
+    <div *ngFor="let soru of sorularim | async; let i = index;" class="col-md-4 mt-4">
+      <div class="card">
+        <div class="card-header">
+          <span role="button" (click)="router.navigate(['kesfet', soru.id])">
+            <span class="badge badge-info">{{i + 1}} - {{soru.uye?.adi + " " + soru.uye?.soyadi}}:</span>
+          <span class="badge">{{soru.icerik}}</span>
+          </span>
+
+          <button (click)="router.navigate(['kesfet', soru.id, 'duzenle'])" class="btn btn-sm btn-outline-success ml-2">Düzenle</button>
+
+          <button (click)="SorumuSil(soru.id)" type="button" class="close" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="card-body">
+          <div>
+            <h5 class="text-center" *ngIf="soru.cevaplar?.length">Cevaplar</h5>
+            <h5 class="text-center" *ngIf="!soru.cevaplar?.length">Henüz hiç cevap verilmemiş</h5>
+            <div class="ml-3" *ngFor="let cevap of soru.cevaplar; let cevapIndex = index;">
+              <span class="badge badge-secondary">{{cevapIndex + 1}} - {{cevap.uye?.adi + " " + cevap.uye?.soyadi}}:</span>
+              <span class="badge">{{cevap.icerik}}</span>
+              <button *ngIf="authServis.girisKontrol" (click)="CevabiSil(cevap.id)" type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+          <hr>
+          <div *ngIf="authServis.girisKontrol" class="col my-3">
+            <app-cevap-ekle [soruId]="soru.id"></app-cevap-ekle>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <div class="row justify-content-center align-items-center mt-5">
+    <div class="col-5">
+      <form (ngSubmit)="Kaydet()" novalidate="">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="isim">İsim</label>
+                  <input [(ngModel)]="isim" id="isim" class="form-control" type="text" name="name">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="soyisim">Soyisim</label>
+                  <input [(ngModel)]="soyisim" id="soyisim" class="form-control" type="text" name="soyisim">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit">Kaydet</button>
+          </div>
+        </div>
+      </form>
+
+      <form (ngSubmit)="EpostaDegistir()">
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="email">E-Posta</label>
+                  <input [(ngModel)]="eposta" name="email" id="email" class="form-control" type="email">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit">E-Postayı Güncelle</button>
+          </div>
+        </div>
+      </form>
+      <hr>
+      <form (ngSubmit)="SifreDegistir()">
+        <div class="row justify-content-center">
+          <div class="col-12 col-sm-6 mb-3">
+            <div class="mb-2"><b>Şife Değiştir</b></div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="simdikiSifre">Şimdiki Şifre</label>
+                  <input [(ngModel)]="simdikiSifre" id="simdikiSifre" name="simdikiSifre" class="form-control"
+                         type="password" placeholder="••••••">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="sifre">Yeni Şifre</label>
+                  <input [(ngModel)]="yeniSifre" name="yeniSifre" id="sifre" class="form-control" type="password"
+                         placeholder="••••••">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <button class="btn btn-primary" type="submit">Şifreyi Değiştir</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

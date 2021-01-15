@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <span class="navbar-brand text-light" href="#">
+    Çayır'la Söyleşi
+  </span>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a
+          [routerLink]="['kesfet']"
+          routerLinkActive="active"
+          class="nav-link text-light"
+          href="#"
+        >
+          Keşfet
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          [routerLink]="['sorularim']"
+          routerLinkActive="active"
+          *ngIf="authServis.girisKontrol"
+          class="nav-link text-light"
+          href="#"
+        >
+          Sorularım
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          [routerLink]="['profilim']"
+          routerLinkActive="active"
+          *ngIf="authServis.girisKontrol"
+          class="nav-link text-light"
+          href="#"
+        >
+          Hesabım
+        </a>
+      </li>
+    </ul>
+
+    <button
+      *ngIf="authServis.girisKontrol"
+      (click)="cikisYap()"
+      type="button"
+      class="btn btn-outline-danger form-inline my-2 my-lg-0"
+    >
+      Çıkış Yap
+    </button>
+
+    <a
+      [routerLink]="['kayit']"
+      *ngIf="!authServis.girisKontrol"
+      type="button"
+      class="btn btn-outline-info form-inline my-2 my-lg-0  mr-1">
+      Kayıt Ol
+    </a>
+    <a
+      [routerLink]="['giris']"
+      *ngIf="!authServis.girisKontrol"
+      type="button"
+      class="btn btn-outline-info form-inline my-2 my-lg-0"
+    >
+      Giriş Yap
+    </a>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

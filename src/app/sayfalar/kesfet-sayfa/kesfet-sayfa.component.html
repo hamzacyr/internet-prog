@@ -1,0 +1,68 @@
+<div class="container-fluid">
+  <app-soru-ekle *ngIf="authServis.girisKontrol"></app-soru-ekle>
+  <hr>
+
+  <div class="row">
+
+    <div *ngFor="let soru of sorular | async; let i = index;" class="col-md-4 mt-4">
+      <div class="card">
+        <div class="card-header" role="button" (click)="router.navigate(['kesfet', soru.id])">
+          <span class="badge badge-secondary">
+            Kategori:</span>
+          <span class="badge">{{soru.kategori?.adi}}
+          </span>
+          <br>
+          <span class="badge badge-secondary">
+            {{i + 1}} - {{soru.uye?.adi + " " + soru.uye?.soyadi}}: </span> <span
+          class="badge">
+          {{soru.icerik}}
+        </span>
+          <br>
+          <span class="badge badge-secondary">Beğeni: </span> <span class="badge">{{soru.begeniSayisi}}</span>
+
+        </div>
+        <div class="card-body">
+          <div>
+            <h5
+              class="text-center"
+              *ngIf="soru.cevaplar?.length"
+            >
+              Cevaplar
+            </h5>
+            <h5
+              class="text-center"
+              *ngIf="!soru.cevaplar?.length"
+            >
+              Herhangi bir cevap yok!
+            </h5>
+            <div
+              class="ml-3"
+              *ngFor="let cevap of soru.cevaplar; let cevapIndex = index;"
+            >
+              <span class="badge badge-secondary">{{cevapIndex + 1}} - {{cevap.uye?.adi + " " + cevap.uye?.soyadi}}
+                :</span>
+              <span class="badge">{{cevap.icerik}}</span>
+              <button
+                *ngIf="authServis.girisKontrol && (authServis.kullanici.uid === cevap.kullaniciId  || authServis.kullanici.uid === soru.kullaniciId)"
+                (click)="CevabimiSil(cevap.id)"
+                type="button"
+                class="close"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">
+                  &times;
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <hr>
+          <div *ngIf="authServis.girisKontrol" class="col my-3">
+            <app-cevap-ekle [soruId]="soru.id"></app-cevap-ekle>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

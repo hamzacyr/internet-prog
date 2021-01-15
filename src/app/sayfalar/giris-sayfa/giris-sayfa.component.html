@@ -1,0 +1,30 @@
+<div class="container-fluid" >
+  <div class="row justify-content-center align-items-center" style="height: 100vh">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header text-center">
+          Giriş Yap
+        </div>
+       <div class="card-body">
+         <form (ngSubmit)="GirisYap()">
+           <div class="form-group">
+             <label for="email">E-Posta Adresi</label>
+             <input [(ngModel)]="eposta" name="eposta" id="email" type="email" class="form-control" placeholder="E-Posta">
+           </div>
+           <div class="form-group">
+             <label for="password">Şifre</label>
+             <input [(ngModel)]="sifre" name="sifre" type="password" class="form-control" id="password" placeholder="Şifre">
+           </div>
+           <button type="submit" class="btn btn-primary float-right">Giriş Yap</button>
+         </form>
+       </div>
+        <div class="card-footer">
+          <a (click)="router.navigate(['kayit'])" class="card-link" role="button">Üyeliğin yok mu?</a>
+        </div>
+        <div class="alert" [ngClass]="sonuc.islem ? 'alert-success' : 'alert-danger'" *ngIf="sonuc.mesaj?.length > 0">
+          {{sonuc.mesaj}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
